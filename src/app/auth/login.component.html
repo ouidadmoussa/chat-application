@@ -1,0 +1,47 @@
+<div class="container-fluid  " id="main">
+
+
+  <form  [formGroup]="loginForm"  id="authForm"
+         (ngSubmit)="login(loginForm.value, loginForm.valid)">
+
+    <div class="row  form-group justify-content-center">
+
+      <h5> WELCOME </h5>
+
+    </div>
+
+
+    <div class="row  form-group justify-content-center">
+
+
+      <div class="col-sm-5">
+        <input type="email" class="form-control" formControlName="email" placeholder="email">
+      </div>
+    </div>
+
+
+    <div class="row form-group justify-content-center">
+
+      <div class="col-sm-5">
+        <input type="password" class="form-control" formControlName="password" placeholder="Password">
+      </div>
+    </div>
+
+
+    <div class=" row form-group justify-content-center">
+
+
+      <div class="col-sm-3 ">
+        <button type="submit" ng-click="submit()" id="btn" class="btn btn-secondary btn-lg btn-block signBtn">Log in</button>
+      </div>
+
+    </div>
+    <div class=" row form-group justify-content-center">
+
+      <small  class="form-text text-muted">You don't  have an  account? <a routerLink="/signup">Signup</a></small>
+
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,60 @@
+<form class="myForm" (ngSubmit)="sendMessage()" #f="ngForm">
+  <div class=" headerPanel border-bottom" style="flex-direction: column">
+
+    <input style="margin-left: 10px" *ngIf=" conversation._id==null" type="text" name="fullName"
+           class="form-control " [(ngModel)]="recever.fullName" placeholder="type the name of person"
+           autocomplete="off" (keyup)="valuechange($event)">
+
+
+    <h6 *ngIf="conversation._id !=null">{{conversation.participants[0].fullName}}</h6>
+
+  </div>
+  <div class="formContainer main" >
+
+  <ul class="listUsers" *ngIf="filtered && filtered.length !=0">
+    <li *ngFor="let user of filtered">
+      <a (click)="valueToggle(user)">{{ user.fullName }}</a>
+      <br/>
+    </li>
+  </ul>
+
+  <ul id="messages" class="message-thread" *ngIf="listMsg">
+
+
+    <li *ngFor="let msg of listMsg" class="d-flex" [ngClass]="{'rightMsg':msg.author._id !=currentUser._id}">
+
+      <div class="avatar">
+
+        <img class="rounded-circle" style="width:100%;"
+             src="../assets/images/profiles/user.jpg"/></div>
+      <div class="macro"
+           [ngClass]="{'msg':msg.author._id ==currentUser._id,'msg-rta':msg.author._id !=currentUser._id}">
+
+        <div class="text text-l"
+             [ngClass]="{'text-l':msg.author._id ==currentUser._id,'text-r':msg.author._id !=currentUser._id}">
+          {{msg.body}}
+
+        </div>
+      </div>
+
+    <li>
+
+  </ul>
+
+
+  <div class="input-bar">
+    <a href="#"><i class="fa fa-smile-o" aria-hidden="true"></i></a>
+    <a href="#"><i class="fa fa-paperclip" aria-hidden="true"></i></a>
+    <a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+    <span class="divider"></span>
+    <input id="m" autocomplete="off" class="input" type="text" name="message" [(ngModel)]="message"
+           placeholder="Type something">
+    <span class="divider"></span>
+
+    <button id="send-button" type="submit" name="button" ng-click="submit()">
+      <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+  </div>
+
+  </div>
+
+</form>

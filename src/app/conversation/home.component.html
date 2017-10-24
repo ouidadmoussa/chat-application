@@ -1,0 +1,111 @@
+<div id="main">
+  <div class="container-fluid main d-flex">
+
+
+    <div class="row main border-bottom">
+
+
+      <!--_________________left column list msgs________________-->
+
+      <div class="col-3 colContainer d-flex border-right" style="padding: 0px">
+        <div class=" headerPanel border-bottom">
+
+          <h5 style="color: #000">Chat</h5>
+
+          <button id="add-conversation" type="button" name="button" (click)="newConversation()">
+            <span><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></span>
+          </button>
+        </div>
+        <!--____________  search msgs____________-->
+
+        <div class="row ">
+          <div class="col headerPanel">
+            <div class="search ">
+              <span class="fa fa-search"></span>
+              <input id="search-input" type="text" onkeyup="findUser()" name="" value=""
+                     placeholder="Search Conversation">
+
+            </div>
+          </div>
+        </div>
+
+
+        <!--_________________list conversations  ___________-->
+
+
+
+        <div class="row main  d-flex colContainer" >
+          <div class="col d-flex">
+            <div class="history-outer d-flex main">
+              <div id="users" class="history-inner">
+                <ul id="users-list">
+                  <li *ngFor="let con of conversations"
+                      [class.selected]="con.conversation === selectedConversation"
+                      (click)="onSelect(con.conversation)">
+                    <div class="user-container"><a href="#" class="">
+                      <div class="picture-container">
+                        <!--<div class="is-active"></div>-->
+                        <img class="profile-picture" src="./assets/images/profiles/user.jpg"></div>
+                      <div class="info-container">
+                        <div class="top-info" *ngIf="con.conversation.participants" >
+                          <span  class="name">{{con.conversation.participants[0].fullName}} </span>
+                          <div class="sent-time"><span>Sun</span></div>
+                        </div>
+
+                        <div class="top-info" *ngIf="!con.conversation.participants" >
+                          <span  class="name">New Conversation </span>
+
+                        </div>
+
+                        <div class="bottom-info"><span class="news">{{con.lastMsg}}</span></div>
+                      </div>
+                    </a></div>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!--__________________end left row _________________________-->
+
+
+      <!--___________________________right column (chat conten ) _____________________ -->
+
+      <div class="col-9 colContainer ">
+
+
+        <conversation-detail *ngIf=" selectedConversation" [conversation]="selectedConversation"
+                             [listMsg]="listMsg"></conversation-detail>
+
+        <div *ngIf="!selectedConversation"><h3>You dont have any Conversation, Create one </h3></div>
+
+      </div>
+
+
+      <!--_____________________________end chat content _________________________-->
+
+      <!--end row main -->
+    </div>
+  </div>
+
+
+  <div class="mastfoot">
+    <div class="inner myFooter">
+      <p>Chat App , by <a href="https://github.com/ouidadmoussa"><i class="fa fa-github"
+                                                                    aria-hidden="true">
+      </i> ouidad Moussa
+      </a></p>
+    </div>
+  </div>
+
+</div>
+

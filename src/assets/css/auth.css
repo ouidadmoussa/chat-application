@@ -1,0 +1,13 @@
+#main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center; /* align horizontal */
+  margin: auto;
+
+}
+
+.signBtn{
+  border-radius: 100px;
+  margin-top: 20px;
+}
